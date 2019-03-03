@@ -1,6 +1,9 @@
 package calc
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // * Testing double
 func TestDouble(t *testing.T) {
@@ -11,5 +14,24 @@ func TestDouble(t *testing.T) {
 
 // * Testing sum
 func TestSum(t *testing.T) {
-	t.Fatal("Test not implemented")
+	if 2 != Sum(0, 2) {
+		t.Fatal("2 + 0 should be 2")
+	}
+}
+
+// * Testing GCD
+func TestGCD(t *testing.T) {
+	if 3 != GCD(3, 9) {
+		t.Fatal("GCD(3,9) should be 3")
+	}
+}
+
+func ExampleGCD() {
+	fmt.Println(GCD(3, 9))
+	// Output:3
+}
+
+func ExampleGCD_coprime() {
+	fmt.Println(CodingGCD(2, 9))
+	// Output: 1
 }

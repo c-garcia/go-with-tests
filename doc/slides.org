@@ -1,0 +1,142 @@
+#+title: Writing go guided by tests
+#+OPTIONS: reveal_title_slide:nil toc:nil reveal_slide_number:nil num:nil
+#+REVEAL_THEME: beige
+
+* Intro
+** Why go?
+** Installing go in MacOS
+
+   - =xcode-select --install=
+   - =make=
+   - use homebrew to install =go= and =dep=
+
+** Development environments
+
+   - emacs / vi
+   - Atom / VS Code
+   - IntelliJ / GoLand
+    
+
+* First steps
+
+** How to create a go project
+   - =x/y/z=
+   - =$GOPATH/src/x/y/z=
+     - default: =~/go=
+   - =git clone ...=
+
+** Setting up
+   - git clone ...
+
+** Our first function
+
+   *File*: =pkg/calc/operations.go=
+   #+begin_src go :exports code :eval never
+     package calc // same as directory name
+     // typed language
+     func Double(x int) int { // types
+             return 2.0 * x // return statement
+     }
+   #+end_src
+
+    *Notice*: initial capital letter
+
+** Our first test
+   
+   *File*: =pkg/calc/operations_test.go=
+   #+begin_src go :exports code :eval never
+     package calc // same package
+
+     import "testing"
+
+     func TestDouble(t *testing.T){ // test name
+             expected := 4 // No semicolon. Short assignment
+             var actual int  // Variable declaration
+             actual = Double(2) // Func call and assignment
+             if expected != actual { // if. No parenthesis
+                     t.Fatal("The double of 2 should be 4")
+             }
+     }
+   #+end_src
+
+** Running the tests
+
+   =go test -v ./...=
+
+   or
+
+   =make test=
+   
+** Let's try
+
+   - Complete the =Sum= function
+   - Create a new =Diff= function
+
+     
+* Control structures
+
+
+** =if=
+
+** =for=
+
+** The GCD function
+
+
+** Let's try
+
+   - Define the =Max= function
+   - Define the =IntSqrt= function
+
+* More friendly tests
+
+** go =dep=
+
+   - =dep init=
+
+** Installing =testify/assert=
+** =for= and =range=
+** Subtests
+** Let's try
+
+   More friendly assertions
+
+
+* types and programs
+
+** typing in go
+
+  - Integer: =int=, =[u]int{8,16,32,64}=
+  - Float/Complex: =float{32,64}=, =complex{32,64}=
+  - String: =string=
+  - array: fixed size =[4]int=
+  - slice: dynamic size =[]size=
+  - pointers: =*int=
+
+** Creating a program
+
+   - directory =cmd/xxxx=
+   - package =main=
+
+** interesting packages   
+
+   | package | purpose                                  |
+   |---------+------------------------------------------|
+   | =fmt=   | formatting and printing strings          |
+   | =os=    | Operating system. Command line arguments |
+   | =flag=  | Command line argument parsing            |
+
+** Using =go doc= and =godoc=
+
+   - =go doc fmt=
+   - =go doc fmt.Printf=
+   - =go doc github.com/c-garcia/...=
+
+
+* Reference
+
+** Tags
+
+   | tag   | description                         |
+   |-------+-------------------------------------|
+   | =s01= | Starting point. Complete first test |

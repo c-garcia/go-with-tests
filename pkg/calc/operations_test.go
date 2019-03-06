@@ -1,7 +1,6 @@
 package calc
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -19,19 +18,9 @@ func TestSum(t *testing.T) {
 	}
 }
 
-// * Testing GCD
-func TestGCD(t *testing.T) {
-	if 3 != GCD(3, 9) {
-		t.Fatal("GCD(3,9) should be 3")
+// * Testing Diff
+func TestDiff(t *testing.T) {
+	if 3 != Diff(8, 5) {
+		t.Fatal("8 - 5 should be 3 ")
 	}
-}
-
-func ExampleGCD() {
-	fmt.Println(GCD(3, 9))
-	// Output:3
-}
-
-func ExampleGCD_coprime() {
-	fmt.Println(CodingGCD(2, 9))
-	// Output: 1
 }

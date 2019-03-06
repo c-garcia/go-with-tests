@@ -37,3 +37,8 @@ func GCDIt(x, y int) int {
 	}
 	return x
 }
+
+// LCM returns the Least Common Multiple of x and y
+func LCM(x, y int) int {
+	return x * y / GCD(x, y)
+}

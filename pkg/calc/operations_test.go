@@ -2,6 +2,8 @@ package calc
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // * Testing double
@@ -51,4 +53,9 @@ func BenchmarkGCDIt(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		GCDIt(39916801, 479001599)
 	}
+}
+
+// * Test for LCM
+func TestLCM(t *testing.T) {
+	assert.Equal(t, 60, LCM(12, 15))
 }

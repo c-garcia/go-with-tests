@@ -3,7 +3,12 @@
 #+REVEAL_THEME: beige
 
 * Intro
+
 ** Why go?
+
+   - Google
+   - Engineering decisions
+
 ** Installing go in MacOS
 
    - =xcode-select --install=
@@ -13,7 +18,7 @@
 ** Development environments
 
    - emacs / vi
-   - Atom / VS Code
+   - Atom / VSCode
    - IntelliJ / GoLand
     
 
@@ -40,6 +45,12 @@
    #+end_src
 
     *Notice*: initial capital letter
+
+** Using =go doc= and =godoc=
+
+   - =go doc fmt=
+   - =go doc fmt.Printf=
+   - =go doc github.com/c-garcia/...=
 
 ** Our first test
    
@@ -69,10 +80,10 @@
    
 ** Let's try
 
+   - Checkout the =s01= tag
    - Complete the =Sum= function
    - Create a new =Diff= function
 
-     
 * Control structures
 
 
@@ -82,24 +93,98 @@
 
 ** The GCD function
 
+   #+begin_src go :exports code :eval never
+     // GCD returns the Greatest common divisor
+     func GCD(x, y int) int {
+             if x == y {
+                     return x
+             } else if x > y {
+                     return GCD(x-y, y)
+             } else {
+                     return GCD(x, y-x)
+             }
+     }
+   #+end_src
+
+** Benchmarks
+
+   #+begin_src go :exports code :eval never
+     // * Benchmark for GCD
+     func BenchmarkGCD(b *testing.B) {
+             for n := 0; n < b.N; n++ {
+                     GCD(39916801, 479001599)
+             }
+     }
+   #+end_src
+
+** Run the benchmarks
+
+   #+begin_src sh :exports code :eval never
+     go test -bench=. ./... # or
+     make bench
+   #+end_src
 
 ** Let's try
 
-   - Define the =Max= function
-   - Define the =IntSqrt= function
+   - check out the =s03= tag
+   - Make an Iterative version of =GCD=: =GCDIt=
+   - Benchmark it and compare both results
 
 * More friendly tests
 
 ** go =dep=
 
+   - vendoring tool
    - =dep init=
+   - How it works? =dep ensure=
+   - Files to check in
 
 ** Installing =testify/assert=
+
+   #+begin_src go :exports code :eval never
+     import (
+             "testing"
+
+             "github.com/stretchr/testify/assert"
+     )
+
+     // * Test for LCM
+     func TestLCM(t *testing.M) {
+          assert.Equal(t, 60, LCM(12, 15))
+     }
+   #+end_src
+
+   *Run* =dep ensure= (and that's all)
+
+   
+* strings
+
+** strings
+
+   - value type
+   - immutable
+   - unicode, =utf-8= encoded
+   - characters: =rune=
+
 ** =for= and =range=
-** Subtests
+   
+   #+begin_src go :exports code :eval never
+     // FindRune returns the first index of the rune r in the stirng s
+     func FindRune(s string, r rune) int {
+             for i, n := range s {
+                     if n == r {
+                             return i
+                     }
+             }
+             return -1
+     }
+   #+end_src
+
+
 ** Let's try
 
-   More friendly assertions
+   - checkout the =s06= tag
+   - Implement the =RuneCountEquals= function
 
 
 * types and programs
@@ -126,12 +211,7 @@
    | =os=    | Operating system. Command line arguments |
    | =flag=  | Command line argument parsing            |
 
-** Using =go doc= and =godoc=
-
-   - =go doc fmt=
-   - =go doc fmt.Printf=
-   - =go doc github.com/c-garcia/...=
-
+** subtests
 
 * Reference
 

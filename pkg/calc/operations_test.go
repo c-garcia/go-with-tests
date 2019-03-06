@@ -59,3 +59,14 @@ func BenchmarkGCDIt(b *testing.B) {
 func TestLCM(t *testing.T) {
 	assert.Equal(t, 60, LCM(12, 15))
 }
+
+// * Test for FindRune
+func TestFindRune(t *testing.T) {
+	assert.Equal(t, 1, FindRune("cucudrulu", 'u'))
+	assert.Equal(t, -1, FindRune("cucudrulu", 'a'))
+}
+
+// * Test for RuneCountEquals
+func TestRuneCountEquals(t *testing.T) {
+	assert.Equal(t, 4, RuneCountEquals("cucudrulu", 'u'))
+}

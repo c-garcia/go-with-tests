@@ -42,3 +42,18 @@ func GCDIt(x, y int) int {
 func LCM(x, y int) int {
 	return x * y / GCD(x, y)
 }
+
+// FindRune returns the first index of the rune r in the stirng s
+func FindRune(s string, r rune) int {
+	for i, n := range s {
+		if n == r {
+			return i
+		}
+	}
+	return -1
+}
+
+// RuneCountEquals returns the number of runes in the string that are qual to the rune
+func RuneCountEquals(s string, r rune) int {
+	return -1
+}

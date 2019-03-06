@@ -24,3 +24,21 @@ func TestDiff(t *testing.T) {
 		t.Fatal("8 - 5 should be 3 ")
 	}
 }
+
+// * Testing GCD
+func TestGCD(t *testing.T) {
+	if 4 != GCD(8, 12) {
+		t.Fatal("GCD(8,12) should be 4")
+	}
+}
+
+// * Benchmark for GCD
+func BenchmarkGCD(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		GCD(39916801, 479001599)
+	}
+}
+
+func TestGCDIt(t *testing.T) {
+	t.Skip("Test not implemented")
+}

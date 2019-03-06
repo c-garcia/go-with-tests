@@ -12,4 +12,8 @@ setup-go: /usr/local/bin/go /usr/local/bin/dep
 test:
 	@go test -v ./...
 
+bench:
+	@go test -bench=. ./...
 
+dep:
+	@dep ensure -v

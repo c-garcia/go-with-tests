@@ -27,6 +27,13 @@ func GCD(x, y int) int {
 }
 
 // GCD returns the Greatest Common Divisor of x and y (More efficient?)
-func GCD(x, y int) int {
-	return 0
+func GCDIt(x, y int) int {
+	for x != y {
+		if x > y {
+			x = x - y
+		} else {
+			y = y - x
+		}
+	}
+	return x
 }

@@ -39,6 +39,16 @@ func BenchmarkGCD(b *testing.B) {
 	}
 }
 
+// * Testing for GCDIt
 func TestGCDIt(t *testing.T) {
-	t.Skip("Test not implemented")
+	if 4 != GCDIt(8, 12) {
+		t.Fatal("GCDIt(8,12) should be 4")
+	}
+}
+
+// * Benchmark for GCD
+func BenchmarkGCDIt(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		GCDIt(39916801, 479001599)
+	}
 }

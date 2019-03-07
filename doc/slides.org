@@ -31,8 +31,45 @@
    - =git clone ...=
 
 ** Setting up
-   - git clone ...
+   - =git clone https://github.com/c-garcia/go-with-tests.git=
 
+     
+** Packages and projects 
+   
+   - =GOPATH=: where our code lives (default =~/Go=)
+     - =src=: projects
+     - =bin=: binary tools (add it to =PATH=)
+     - =pkg=: libs
+
+** Go searching
+
+   #+begin_src go :exports code :eval never
+     package mypackage
+
+     import "xxx/yyy/zzz" // import tag
+
+     func main(){
+             zzz.HelloWorld()
+     }
+   #+end_src
+
+   should be in =$GOPATH/src/xxx/yyy/zzz=
+
+** =xxx/yyy/zzz=? 
+
+   - That would be a project
+   - Normally, it is more like =github.com/c-garcia/example=
+   - There is a =$GOPATH/src/github.com/c-garcia/example=
+
+** Packages
+
+   - a package, a directory. Example: =$GOPATH/src/github.com/c-garcia/example/pkg1=
+   - *for now*:
+     - the files in the directory implement the package
+     - all files in the directory begin with =package pkg1=
+     - those files whose names =*_test.go= are tests
+
+   
 ** Our first function
 
    *File*: =pkg/calc/operations.go=
@@ -89,7 +126,45 @@
 
 ** =if=
 
+   #+begin_src go :exports code :eval never
+     var result bool
+
+     if result {
+             // ...
+     } else {
+             // ...
+     }
+   #+end_src
+
+** more =if=
+
+   #+begin_src go :exports code :eval never
+     if err := file.Close(); err != nil {
+             // ...
+     }
+
+     err = 1 // err exists only in within the if body
+   #+end_src
+
 ** =for=
+
+   Same as C but without parentheses
+
+   #+begin_src go :exports code :eval never
+
+     for i:=1; i<10; i++ {
+             // ...
+     }
+
+     for i < 10 {
+             //...
+     }
+
+     for {
+             // ...
+     }
+
+   #+end_src
 
 ** The GCD function
 
@@ -169,7 +244,7 @@
 ** =for= and =range=
    
    #+begin_src go :exports code :eval never
-     // FindRune returns the first index of the rune r in the stirng s
+     // FindRune returns the first index of the rune r in the string s
      func FindRune(s string, r rune) int {
              for i, n := range s {
                      if n == r {
